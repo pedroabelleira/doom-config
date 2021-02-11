@@ -53,12 +53,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;;(map! :leader
-;;      :desc "M-x" #'counsel-M-x)
-
-;;(map! :leader
-;;      :desc "Expand selection" "v" #'er/expand-region)
-
 ;; Make the ',' work as in Spacemacs (act as a "major mode leader").
 ;; It saves having to press SPC + m, replacing these two keystrokes by one
 ;;(setq evil-snipe-override-evil-repeat-keys nil)
@@ -74,3 +68,31 @@
 ;; It saves having to press SPC + m, replacing these two keystrokes by one
 (setq evil-snipe-override-evil-repeat-keys nil)
 (setq doom-localleader-key ",")
+
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+	     (next-win-buffer (window-buffer (next-window)))
+	     (this-win-edges (window-edges (selected-window)))
+	     (next-win-edges (window-edges (next-window)))
+	     (this-win-2nd (not (and (<= (car this-win-edges)
+					 (car next-win-edges))
+				     (<= (cadr this-win-edges)
+					 (cadr next-win-edges)))))
+	     (splitter
+	      (if (= (car this-win-edges)
+		     (car (window-edges (next-window))))
+		  'split-window-horizontally
+		'split-window-vertically)))
+	(delete-other-windows)
+	(let ((first-win (selected-window)))
+	  (funcall splitter)
+	  (if this-win-2nd (other-window 1))
+	  (set-window-buffer (selected-window) this-win-buffer)
+	  (set-window-buffer (next-window) next-win-buffer)
+	  (select-window first-win)
+	  (if this-win-2nd (other-window 1))))))
+
+
+
