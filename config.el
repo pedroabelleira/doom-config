@@ -64,4 +64,13 @@
 ;;(setq evil-snipe-override-evil-repeat-keys nil)
 ;;(setq doom-localleader-key ",")
 
-(add-load-path! "local/pas-util.el")
+(map! :leader
+      :desc "M-x" "SPC" #'counsel-M-x)
+
+(map! :leader
+      :desc "Expand selection" "v" #'er/expand-region)
+
+;; Make the ',' work as in Spacemacs (act as a "major mode leader").
+;; It saves having to press SPC + m, replacing these two keystrokes by one
+(setq evil-snipe-override-evil-repeat-keys nil)
+(setq doom-localleader-key ",")
