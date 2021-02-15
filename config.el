@@ -107,3 +107,9 @@
 
 (map! :leader
       :desc "Change window" "w w" #'ace-window)
+
+;; (map! :leader
+;;       :desc "Comment/uncomment code" "g c" #'comment-or-uncomment-region)
+
+(map!
+ :nv "gc"    #'comment-or-uncomment-region)
