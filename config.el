@@ -68,6 +68,8 @@
 ;; It saves having to press SPC + m, replacing these two keystrokes by one
 (setq evil-snipe-override-evil-repeat-keys nil)
 (setq doom-localleader-key ",")
+(setq doom-localleader-alt-key "C-,")
+(setq doom-leader-alt-key "C-SPC")
 
 (defun toggle-window-split ()
   (interactive)
@@ -108,8 +110,6 @@
 (map! :leader
       :desc "Change window" "w w" #'ace-window)
 
-;; (map! :leader
-;;       :desc "Comment/uncomment code" "g c" #'comment-or-uncomment-region)
-
+;; FIXME: this is needed because of an eeror with the default Doom binding
 (map!
  :nv "gc"    #'comment-or-uncomment-region)
