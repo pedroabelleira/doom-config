@@ -71,6 +71,8 @@
 (setq doom-localleader-alt-key "C-,")
 (setq doom-leader-alt-key "C-SPC")
 
+;; Function to change window split orientation from vertical to horizontal
+;; and viceversa
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
@@ -113,3 +115,8 @@
 ;; FIXME: this is needed because of an eeror with the default Doom binding
 (map!
  :nv "gc"    #'comment-or-uncomment-region)
+
+;; Add keybinding to debugger
+(map! :map rustic-mode-map
+      :localleader
+      (:desc "cargo audit"    "bg" #'projectile-run-gdb))
