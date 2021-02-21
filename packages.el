@@ -51,3 +51,5 @@
 
 ;;(package! pas-util
 ;;  :recipe (:local-repo "pas/util"))
+
+;;(package! selectric)
