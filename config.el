@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 13 :weight 'semi-bold)
-      doom-variable-pitch-font (font-spec :family "sans" :size 15))
+(setq doom-font (font-spec :family "Noto Sans Mono" :size 14 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "sans" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -76,27 +76,27 @@
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-	     (next-win-buffer (window-buffer (next-window)))
-	     (this-win-edges (window-edges (selected-window)))
-	     (next-win-edges (window-edges (next-window)))
-	     (this-win-2nd (not (and (<= (car this-win-edges)
-					 (car next-win-edges))
-				     (<= (cadr this-win-edges)
-					 (cadr next-win-edges)))))
-	     (splitter
-	      (if (= (car this-win-edges)
-		     (car (window-edges (next-window))))
-		  'split-window-horizontally
-		'split-window-vertically)))
-	(delete-other-windows)
-	(let ((first-win (selected-window)))
-	  (funcall splitter)
-	  (if this-win-2nd (other-window 1))
-	  (set-window-buffer (selected-window) this-win-buffer)
-	  (set-window-buffer (next-window) next-win-buffer)
-	  (select-window first-win)
-	  (if this-win-2nd (other-window 1))))))
+      (let* ((this-win-buffer (window-buffer)))
+       (next-win-buffer (window-buffer (next-window)))
+       (this-win-edges (window-edges (selected-window)))
+       (next-win-edges (window-edges (next-window)))
+       (this-win-2nd (not (and (<= (car this-win-edges))))
+           (car next-win-edges
+             (<= (cadr this-win-edges)))
+           (cadr next-win-edges))
+       (splitter
+        (if (= (car this-win-edges))
+         (car (window-edges (next-window))))))
+      'split-window-horizontally
+    'split-window-vertically)
+  (delete-other-windows)
+  (let ((first-win (selected-window)))
+    (funcall splitter)
+    (if this-win-2nd (other-window 1))
+    (set-window-buffer (selected-window) this-win-buffer)
+    (set-window-buffer (next-window) next-win-buffer)
+    (select-window first-win)
+    (if this-win-2nd (other-window 1))))
 
 (define-key ctl-x-4-map "t" 'toggle-window-split)
 
@@ -121,3 +121,17 @@
 (map! :map rustic-mode-map
       :localleader
       (:desc "cargo audit"    "bg" #'projectile-run-gdb))
+
+;; Set parinfer to be on indent mode by default
+(setq parinfer-auto-switch-indent-mode t)
+;;(add-to-list 'parinfer-extensions 'smart-yank)
+;;(add-to-list 'parinfer-extensions 'paredit)
+
+
+(defun pas/open-current-in-treemacs ()
+  (interactive)
+  (treemacs-find-file)
+  (treemacs-select-window))
+
+(map! :leader
+      :desc "Find file in project sidebar and focus" "o o" #'pas/open-current-in-treemacs)
