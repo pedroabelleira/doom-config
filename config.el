@@ -135,3 +135,5 @@
 
 (map! :leader
       :desc "Find file in project sidebar and focus" "o o" #'pas/open-current-in-treemacs)
+
+(setq mac-command-modifier 'control)
