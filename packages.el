@@ -53,3 +53,7 @@
 ;;  :recipe (:local-repo "pas/util"))
 
 ;;(package! selectric)
+(package! flycheck-clj-kondo)
+(package! lorem-ipsum)
+(package! prettier-js)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
