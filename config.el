@@ -114,6 +114,12 @@
 (map! :leader
       :desc "Change window" "w w" #'ace-window)
 
+(map! :leader
+      :desc "Next workspace" "TAB j" #'+workspace/switch-right)
+
+(map! :leader
+      :desc "Previous workspace" "TAB k" #'+workspace/switch-left)
+
 ;; FIXME: this is needed because of an eeror with the default Doom binding
 (map!
  :nv "gc"    #'comment-or-uncomment-region)
