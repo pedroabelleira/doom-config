@@ -54,7 +54,13 @@
     (cons 320 "#6f4e52")
     (cons 340 "#5B6268")
     (cons 360 "#5B6268")))
- '(vc-annotate-very-old-color nil))
+ '(vc-annotate-very-old-color nil)
+ '(web-mode-auto-close-style 3)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-enable-auto-expanding t)
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-sql-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
