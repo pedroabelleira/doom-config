@@ -147,7 +147,3 @@
 (use-package! lsp-tailwindcss
   :init (setq lsp-tailwindcss-add-on-mode t))
 
-;; Prettier js
-;; (use-package! prettier-js)
-;; (add-hook 'js2-mode-hook 'prettier-js-mode)
-;; (add-hook 'web-mode-hook 'prettier-js-mode)
