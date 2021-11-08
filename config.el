@@ -159,6 +159,11 @@
       "o c"
       #'pas/goto-file-and-close-treemacs)
 
+(map! :map (evil-treemacs-state-map treemacs-mode-map)
+      "L"
+      :desc "Open file and close treemacsin project sidebar and focus"
+      #'pas/goto-file-and-close-treemacs)
+
 ;; Extra packages
 (use-package! lsp-tailwindcss
   :init (setq lsp-tailwindcss-add-on-mode t))
