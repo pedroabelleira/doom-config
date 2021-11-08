@@ -26,7 +26,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-opera-light)
-(setq doom-theme 'doom-ephemeral)
+;; (setq doom-theme 'doom-ephemeral)
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -120,6 +121,9 @@
 (map! :leader
       :desc "Previous workspace" "TAB k" #'+workspace/switch-left)
 
+(map! :leader
+      :desc "Window resize/nav" "w e" #'+hydra/window-nav/body)
+
 ;; FIXME: this is needed because of an eeror with the default Doom binding
 (map!
  :nv "gc"    #'comment-or-uncomment-region)
@@ -134,7 +138,7 @@
 ;;(add-to-list 'parinfer-extensions 'smart-yank)
 ;;(add-to-list 'parinfer-extensions 'paredit)
 
-
+;; Function and keybinding to open the current buffer in treemacs
 (defun pas/open-current-in-treemacs ()
   (interactive)
   (treemacs-find-file)
@@ -143,7 +147,23 @@
 (map! :leader
       :desc "Find file in project sidebar and focus" "o o" #'pas/open-current-in-treemacs)
 
-(load-file "~/.doom.d/local.el")
+;; Function and keybinding to open the current selected file
+;; as a buffer and close treemeacs
+(defun pas/goto-file-and-close-treemacs()
+  (interactive)
+  (treemacs-RET-action)
+  (+treemacs/toggle))
+
+(map! :leader
+      :desc "Open file and close treemacsin project sidebar and focus"
+      "o c"
+      #'pas/goto-file-and-close-treemacs)
+
+;; Extra packages
 (use-package! lsp-tailwindcss
   :init (setq lsp-tailwindcss-add-on-mode t))
 
+;; Load a local configuration file if it exists
+(let ((file "~/.doom.d/local.el"))
+  (when (f-exists? file)
+    (load-file "~/.doom.d/local.el")))
