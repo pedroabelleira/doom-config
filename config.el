@@ -171,4 +171,4 @@
 ;; Load a local configuration file if it exists
 (let ((file "~/.doom.d/local.el"))
   (when (f-exists? file)
-    (load-file "~/.doom.d/local.el")))
+    (load-file file)))
