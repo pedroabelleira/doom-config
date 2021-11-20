@@ -170,11 +170,22 @@
       #'other-frame)
 
 ;; Extra packages
+(add-to-list 'load-path "~/.doom.d/extra-packages/")
+
 (use-package! lsp-tailwindcss
   :init (setq lsp-tailwindcss-add-on-mode t))
 
+(use-package! pas-win
+  :config
+  (map! :leader
+        :desc "Save window state"
+        "w y"
+        #'pas-win/save-window-state)
+  (map! :leader
+        :desc "Restore window state"
+        "w Y"
+        #'pas-win/restore-window-state)
+  )
+
 ;; Load a local configuration file if it exists
 (load "~/.doom.d/local.el" t)
-
-(let ((pks (f-files "~/.doom.d/extra-packages/")))
-  (--each pks (load it)))
