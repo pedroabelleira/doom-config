@@ -164,6 +164,11 @@
       :desc "Open file and close treemacsin project sidebar and focus"
       #'pas/goto-file-and-close-treemacs)
 
+(map! :leader
+      :desc "Other frame"
+      "w f"
+      #'other-frame)
+
 ;; Extra packages
 (use-package! lsp-tailwindcss
   :init (setq lsp-tailwindcss-add-on-mode t))
