@@ -174,6 +174,7 @@
   :init (setq lsp-tailwindcss-add-on-mode t))
 
 ;; Load a local configuration file if it exists
-(let ((file "~/.doom.d/local.el"))
-  (when (f-exists? file)
-    (load-file file)))
+(load "~/.doom.d/local.el" t)
+
+(let ((pks (f-files "~/.doom.d/extra-packages/")))
+  (--each pks (load it)))
