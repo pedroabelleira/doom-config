@@ -184,8 +184,7 @@
   (map! :leader
         :desc "Restore window state"
         "w Y"
-        #'pas-win/restore-window-state)
-  )
+        #'pas-win/restore-window-state))
 
 ;; Load a local configuration file if it exists
 (load "~/.doom.d/local.el" t)
