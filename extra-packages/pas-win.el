@@ -16,6 +16,7 @@
 
 ;;;###autoload
 (defun pas-win/save-window-state ()
+  "Save the window state with a name"
   (interactive)
   (let ((name (read-string "Enter config name: "))
         (conf (current-window-configuration))
@@ -30,6 +31,10 @@
       (goto-char pt))))
 
 (defun pas-win/restore-window-state ()
+  "Restore the window state to a previously saved one.
+
+The window state will be restored to a previous state saved
+with a call to [pas-win/save-window-state]"
   (interactive)
   (ivy-read "Select the window configuration: "
             (ht-map (lambda (k v) (format "%s" k)) pas-win--window-configs)
