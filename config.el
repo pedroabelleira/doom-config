@@ -169,6 +169,20 @@
       "w f"
       #'other-frame)
 
+(map! :map 'company-active-map
+      "C-p"
+      #'evil-complete-previous)
+
+(use-package! company
+  :config
+  (map! :map 'company-active-map
+        "C-p"
+        #'evil-complete-previous)
+  (map! :map 'company-active-map
+        "C-n"
+        #'evil-complete-next))
+
+
 ;; Extra packages
 (add-to-list 'load-path "~/.doom.d/extra-packages/")
 
@@ -184,8 +198,7 @@
   (map! :leader
         :desc "Restore window state"
         "w Y"
-        #'pas-win/restore-window-state)
-  )
+        #'pas-win/restore-window-state))
 
 ;; Load a local configuration file if it exists
 (load "~/.doom.d/local.el" t)
