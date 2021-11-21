@@ -60,3 +60,4 @@
 (package! consult)
 (package! embark-consult)
 (package! ranger)
+(package! 2048-game)

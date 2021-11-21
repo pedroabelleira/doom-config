@@ -209,6 +209,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package! ranger)
+(use-package! 2048-game)
 
 (use-package! pas-win
   :config
