@@ -169,10 +169,6 @@
       "w f"
       #'other-frame)
 
-(map! :map 'company-active-map
-      "C-p"
-      #'evil-complete-previous)
-
 (use-package! company
   :config
   (map! :map 'company-active-map
