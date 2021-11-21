@@ -169,6 +169,15 @@
       "w f"
       #'other-frame)
 
+(use-package! company
+  :config
+  (map! :map 'company-active-map
+        "C-p"
+        #'evil-complete-previous)
+  (map! :map 'company-active-map
+        "C-n"
+        #'evil-complete-next))
+
 ;; Extra packages
 (add-to-list 'load-path "~/.doom.d/extra-packages/")
 
