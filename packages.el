@@ -59,3 +59,4 @@
 (package! embark)
 (package! consult)
 (package! embark-consult)
+(package! ranger)
