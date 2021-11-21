@@ -52,9 +52,10 @@
 ;;(package! pas-util
 ;;  :recipe (:local-repo "pas/util"))
 
-;;(package! selectric)
 (package! flycheck-clj-kondo)
 (package! lorem-ipsum)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
-
-;;(package! prettier-js)
+(package! marginalia)
+(package! embark)
+(package! consult)
+(package! embark-consult)
