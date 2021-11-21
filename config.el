@@ -211,16 +211,16 @@
 (use-package! ranger)
 (use-package! 2048-game)
 
-(use-package! pas-win
+(use-package! ctg-win
   :config
   (map! :leader
         :desc "Save window state"
         "w y"
-        #'pas-win/save-window-state)
+        #'ctg-win/save-window-state)
   (map! :leader
         :desc "Restore window state"
         "w Y"
-        #'pas-win/restore-window-state))
+        #'ctg-win/restore-window-state))
 
 ;; Load a local configuration file if it exists
 (load "~/.doom.d/local.el" t)
